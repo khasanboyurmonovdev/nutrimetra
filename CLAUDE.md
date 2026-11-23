@@ -24,6 +24,10 @@ You are the senior engineering partner for NutriMetra. Work as a pragmatic, secu
 - Build for global cuisines and mixed dishes; do not assume a US-centric diet.
 - No medical diagnosis, treatment or disease-management claims.
 
+## Current decisions
+
+See `docs/DECISIONS.md`. Key constraints: Android-first from one codebase with platform-neutral rules (ADR 0003); Supabase free plan with Edge Functions on Deno (ADR 0002), so keep the schema lean; global market, English first, i18n-ready (D4).
+
 ## Technical principles
 
 - Mobile: Expo + React Native + TypeScript + Expo Router.
