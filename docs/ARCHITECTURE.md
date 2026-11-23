@@ -10,15 +10,15 @@
 | Forms/validation | React Hook Form + Zod | Typed forms and runtime validation |
 | Server state | TanStack Query | Caching, retries, mutations and offline-friendly patterns |
 | Local state | Zustand (limited use) | Lightweight UI state; server data stays in Query |
-| Backend | Supabase (Postgres, Auth, Storage, RLS, Edge Functions) | Fast managed foundation and relational data model |
-| AI orchestration | Server-side TypeScript initially; isolate behind an `AIProvider` interface | Keep architecture simple and provider replaceable |
-| Nutrition data | USDA FoodData Central + Open Food Facts where licensing/coverage fit; evaluate regional sources | Structured nutrient records rather than relying on LLM arithmetic |
+| Backend | Supabase free plan (Postgres, Auth, Storage, RLS, Edge Functions on Deno) | Fast managed foundation, relational data model, $0 until usage or revenue justifies upgrading (ADR 0002) |
+| AI orchestration | Edge Functions behind an `AIProvider` interface; provider chosen by evaluation (ADR 0006) | Keep architecture simple and provider replaceable |
+| Nutrition data | USDA FoodData Central (imported) + Open Food Facts (live query) + our curated global dish library (ADR 0005) | Structured nutrient records rather than relying on LLM arithmetic |
 | Billing | RevenueCat | Unified subscription entitlement management |
 | Analytics | PostHog | Funnel, retention and feature analysis |
 | Crash/error | Sentry | Mobile and backend diagnostics |
 | Push | Expo Notifications initially | Cross-platform notification delivery |
 | CI/CD | EAS Build/Submit + GitHub Actions | Reproducible mobile builds |
-| Testing | Jest or Vitest for domain; React Native Testing Library; Maestro for E2E | Layered confidence |
+| Testing | Vitest for packages; jest-expo + React Native Testing Library for the app; Maestro for E2E (ADR 0007) | Layered confidence |
 
 ### Why not Flutter/KMP/native first?
 Flutter is a strong alternative, but the founder's TypeScript/React experience and the product's fast experimentation needs favor Expo/React Native. Kotlin Multiplatform can share domain logic but still requires more platform-specific UI work. Native Swift + Kotlin offers maximum platform control but doubles much of the product delivery effort. Revisit only if measured performance or platform capability requires it.
@@ -58,6 +58,8 @@ nutrimetra/
 - Notifications
 
 ## Data model (initial)
+See ADR 0004 for estimate ranges, per-value provenance, recipes and yield factors, and `MEAL_CONTEXT_ENGINE.md` for memory tables.
+
 - `profiles`: user-owned profile and units.
 - `goals`: target settings with effective dates and calculation assumptions.
 - `foods`: normalized catalog references and source identifiers.
@@ -65,7 +67,8 @@ nutrimetra/
 - `meal_entries`: user, local date/time, meal type, notes, analysis status.
 - `meal_items`: food reference, quantity, unit, preparation, nutrient snapshot, provenance.
 - `meal_analysis_runs`: provider/model/version, input hash, structured result, confidence and cost metadata; avoid retaining raw image longer than necessary.
-- `meal_memories`: user-confirmed reusable meals and portions.
+- `meal_memories`, `meal_memory_items`, `user_corrections`: Meal Context Engine v0.
+- `recipes`, `recipe_components`: system and user dishes with yield factors.
 - `consents`: purpose, policy version, timestamp and revocation.
 - `subscriptions`: entitlement mirror; RevenueCat remains billing authority.
 

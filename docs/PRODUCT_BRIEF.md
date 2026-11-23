@@ -35,6 +35,7 @@ Capture → Identify → Estimate → Confirm/edit → Understand today's balanc
 "Log a meal in under 20 seconds, with estimates you can inspect and correct."
 
 ## MVP features
+Canonical scope lives in `PRD.md`; this list is a summary.
 - Onboarding: age gate (18+ initially), units, goal, activity, dietary preferences and optional body metrics.
 - Daily dashboard: energy estimate, protein/carbs/fat, meal timeline and remaining target.
 - Meal capture: photo, text and manual entry.
@@ -42,7 +43,6 @@ Capture → Identify → Estimate → Confirm/edit → Understand today's balanc
 - User correction: change food, portion, ingredients and preparation.
 - Food data lookup: verified database records and source attribution.
 - Meal memory: save confirmed meals and portions for fast repeat logging.
-- Weight trend: optional, user-controlled, trend-based display.
 - Weekly reflection: patterns and one practical suggestion.
 - Privacy controls: export/delete account; photo retention setting.
 
@@ -53,6 +53,7 @@ Capture → Identify → Estimate → Confirm/edit → Understand today's balanc
 - Wearable integrations beyond a minimal post-MVP spike.
 - Barcode catalog at global scale before food-data licensing and quality are assessed.
 - Meal plans that claim clinical personalization.
+- Weight trend (post-MVP; sensitive and low differentiation).
 
 ## Success metrics
 **Activation:** user completes onboarding and confirms first meal.  

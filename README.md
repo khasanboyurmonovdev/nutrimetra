@@ -1,7 +1,7 @@
 # NutriMetra — Eat with clarity
 
 **Product:** AI-assisted food understanding and nutrition companion  
-**Platforms:** iOS + Android  
+**Platforms:** Android first, then iOS (one shared codebase)  
 **Working brand name:** NutriMetra (subject to trademark, domain and store clearance)  
 **Status:** Pre-development / discovery
 
@@ -25,7 +25,7 @@ This is a product hypothesis to validate, not a claim that AI can precisely infe
 ## Start here
 
 1. Read `CLAUDE.md` before making changes.
-2. Read `docs/PRODUCT_BRIEF.md`, `docs/PRD.md`, and `docs/ARCHITECTURE.md`.
+2. Read `docs/DECISIONS.md`, `docs/PRD.md` (canonical MVP scope), `docs/ARCHITECTURE.md` and `docs/MEAL_CONTEXT_ENGINE.md`.
 3. Use `docs/ROADMAP.md` to select the first milestone.
 4. Create an implementation plan before coding. Do not scaffold the entire product in one pass.
 5. Keep all credentials in environment variables and never commit secrets.
